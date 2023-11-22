@@ -1,11 +1,12 @@
 const flatpickr = require('flatpickr');
-// Описаний в документації
-//
+
 import flatpickr from 'flatpickr';
-// Додатковий імпорт стилів
+
 import 'flatpickr/dist/flatpickr.min.css';
 
 import Notiflix from 'notiflix';
+
+let intervalId = 0;
 
 const inputTime = document.querySelector('input[type="text"]');
 const btnStart = document.querySelector('button[data-start]');
@@ -31,7 +32,7 @@ flatpickr(inputTime, options);
 
 btnStart.addEventListener('click', () => {
   const endDate = new Date(inputTime.value).getTime();
-  setInterval(() => {
+  intervalId = setInterval(() => {
     const now = new Date().getTime();
     const timeRemaining = endDate - now;
     const { days, hours, minutes, seconds } = convertMs(timeRemaining);
