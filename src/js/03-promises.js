@@ -23,7 +23,7 @@ function createPromise(position, delay) {
 form.addEventListener('submit', evt => {
   evt.preventDefault();
 
-  for (let i = 0; i < amount.value; i++) {
+  for (let i = 1; i < amount.value; i++) {
     const delay = parseInt(firstDelay.value) + i * parseInt(stepDelay.value);
 
     createPromise(i, delay)
