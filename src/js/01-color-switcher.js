@@ -8,6 +8,8 @@ let timerId = 0;
 
 const divElement = document.createElement('div');
 
+btnStop.disabled = true;
+
 divElement.appendChild(btnStart);
 divElement.appendChild(btnStop);
 
@@ -17,7 +19,9 @@ divElement.style.display = 'flex';
 divElement.style.alignItems = 'center';
 divElement.style.justifyContent = 'center';
 divElement.style.height = '100vh';
-divElement.style.gap = '30px';
+divElement.style.gap = '20px';
+btnStart.style.padding = '10px 15px';
+btnStop.style.padding = '10px 15px';
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
@@ -27,6 +31,7 @@ function getRandomHexColor() {
 
 btnStart.addEventListener('click', () => {
   btnStart.disabled = true;
+  btnStop.disabled = false;
 
   timerId = setInterval(() => {
     body.style.backgroundColor = getRandomHexColor();
@@ -36,4 +41,5 @@ btnStart.addEventListener('click', () => {
 btnStop.addEventListener('click', () => {
   clearInterval(timerId);
   btnStart.disabled = false;
+  btnStop.disabled = true;
 });
