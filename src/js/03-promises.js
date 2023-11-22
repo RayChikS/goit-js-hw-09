@@ -3,6 +3,7 @@ const form = document.querySelector('.form');
 const firstDelay = document.querySelector('input[name="delay"]');
 const stepDelay = document.querySelector('input[name="step');
 const amount = document.querySelector('input[name="amount');
+const btn = document.querySelector('button');
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -22,6 +23,7 @@ function createPromise(position, delay) {
 
 form.addEventListener('submit', evt => {
   evt.preventDefault();
+  btn.disabled = true;
   let delay = parseInt(firstDelay.value);
 
   for (let i = 1; i <= amount.value; i++) {
