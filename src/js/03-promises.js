@@ -22,10 +22,9 @@ function createPromise(position, delay) {
 
 form.addEventListener('submit', evt => {
   evt.preventDefault();
+  let delay = parseInt(firstDelay.value);
 
-  for (let i = 1; i < amount.value; i++) {
-    const delay = parseInt(firstDelay.value) + i * parseInt(stepDelay.value);
-
+  for (let i = 1; i <= amount.value; i++) {
     createPromise(i, delay)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
@@ -37,5 +36,7 @@ form.addEventListener('submit', evt => {
           `❌ Rejected promise ${position} in ${delay}ms`
         );
       });
+
+    delay = parseInt(firstDelay.value) + i * parseInt(stepDelay.value);
   }
 });
