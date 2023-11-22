@@ -29,6 +29,8 @@ const options = {
 flatpickr(inputTime, options);
 
 btnStart.addEventListener('click', () => {
+  btnStart.disabled = true;
+
   const endDate = new Date(inputTime.value).getTime();
   intervalId = setInterval(() => {
     const now = new Date().getTime();
@@ -44,7 +46,7 @@ btnStart.addEventListener('click', () => {
     document.querySelector('[data-minutes]').textContent = formattedMinutes;
     document.querySelector('[data-seconds]').textContent = formattedSeconds;
 
-    if (timeRemaining <= 0) {
+    if (timeRemaining <= 1000) {
       clearInterval(intervalId);
     }
   }, 1000);
